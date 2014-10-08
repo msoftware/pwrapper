@@ -3,7 +3,7 @@
 PWrapper is a framework addon to make your WordPress development easier with a set of conventions.
 It is based on classes and magic methods to let you create WP Applications that are readable and powerful.
 
-We rely on **Pods Framework** for types platform, but it´s not a dependency.
+We rely on Pods Framework for types platform, but it´s not a dependency.
 
 ##Design Overview
 
@@ -76,6 +76,8 @@ On your theme or plugin, the following folder structure should exist
 Every php file in `includes` folder gets into your WP runtime automatically. When using templates, each module `template` folder gets into lookup hierarchy.
 
 ##Modules
+
+####Core
 
 ####Ajax
 
@@ -153,15 +155,15 @@ Then to render it use the `PW_Template` class which introduces the `render` meth
     ];
     echo PW_Template::render('app/pool.html', $context);
 
-Please check (h2o wiki)[https://github.com/speedmax/h2o-php/wiki] for further information on the templating language.
+Please check [h2o wiki](https://github.com/speedmax/h2o-php/wiki) for further information on the templating language.
 
 ####Types
 
-WordPress Types are a fundamental piece in the WP as Application Framework concept. It is powerful, but not enought for most business apps. For that reason (pods-framework)[http://pods.io/] is been around solving cases that requires complex database designs.
+WordPress Types are a fundamental piece in the WP as Application Framework concept. It is powerful, but not enought for most business apps. For that reason [pods-framework](http://pods.io/) is been around solving cases that requires complex database designs.
 
 *PW Types* aims to improve and structure your objects so you can keep the **business logic** in a readable fashion.
 
-It ships magic methods for `save` and `delete`. We are transparently encapsulating (pods hooks)[http://pods.io/docs/code/filter-reference/pods_api_pre_save_pod_item_podname/], so you can fully rely on the framework engine.
+It ships magic methods for `save` and `delete`. We are transparently encapsulating [pods hooks](http://pods.io/docs/code/filter-reference/pods_api_pre_save_pod_item_podname/), so you can fully rely on the framework engine.
 
     class App_Pool extends PW_Module
     {
@@ -267,7 +269,7 @@ An example `ui` definition would be as follows:
          ]
     )
 
-The options are the same of (pods_ui)[http://pods.io/docs/code/pods-ui/].
+The options are the same of [pods_ui](http://pods.io/docs/code/pods-ui/).
 
 ####Notices
 

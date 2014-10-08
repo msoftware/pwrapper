@@ -1,0 +1,100 @@
+- Allow plugin package (extending and using the wrapper - piklist like)
+- Change includes folder to `modules`
+- refactor class_methods
+- dependency checker (from core to check plugins and theme deps)
+
+- move important helpers to module classes
+
+- add wrapper function to action hook `wp` (which has wp vars and query loaded)
+
+- add prefix config for auto generated methods (widget, ..)
+    $prefix=avaliza   -->  avaliza widget xyz
+    
+##Class implementation design patterns
+
+- change how objects are created (method name pattern)
+- allow further customization of core functionalities
+- implement bether separation design
+- refactoring - (widget, shortcode)
+
+##PW_DB
+
+- allow add / update fields
+- include indexes
+- check existing first, than alter, than cache the change.
+- wp plugin activion method?
+
+##Mongo Record
+
+- campos automaticos: created, modified, error (api credito)
+- relationship abstractions: lazy load child and simple integrity
+- indexes - onn plugin activation? check mongodm
+
+##Endpoings
+
+    add_action( 'init', array( $this, 'add_boleto_endpoint' ) );
+    add_action( 'template_redirect', array( $this, 'boleto_template' ) );
+    public function add_boleto_endpoint() {
+        add_rewrite_endpoint( 'boleto', EP_PERMALINK | EP_ROOT );
+    }
+    public static function activate() {
+        // Add the boleto endpoint.
+        add_rewrite_endpoint( 'boleto', EP_PERMALINK | EP_ROOT );
+
+        flush_rewrite_rules();
+    }
+
+    public static function deactivate() {
+        flush_rewrite_rules();
+    }
+    public function boleto_template() {
+        global $wp_query;
+
+        if ( ! isset( $wp_query->query_vars['boleto'] ) ) {
+            return;
+        }
+
+        // Support for plugin older versions.
+        $boleto_code = isset( $_GET['ref'] ) ? $_GET['ref'] : $wp_query->query_vars['boleto'];
+        include_once plugin_dir_path( __FILE__ ) . 'templates/boleto.php';
+
+        exit;
+    }
+
+Or the real version
+
+    add_filter( 'rewrite_rules_array','create_rewrite_rules' );
+    add_filter( 'query_vars','my_insert_query_vars' );
+    add_action( 'wp_loaded','my_flush_rules' );
+    function create_rewrite_rules( $rewrite ) {
+        global $wp_rewrite;
+        
+        // add rewrite tokens
+        $keytag_token = '%tag%';
+        $wp_rewrite->add_rewrite_tag( $keytag_token, '(.+)', 'tag=' );
+        
+        $keywords_structure = $wp_rewrite->root . "tag/$keytag_token";
+        $keywords_rewrite = $wp_rewrite->generate_rewrite_rules( $keywords_structure );
+        
+        return ( $rewrite + $keywords_rewrite );
+    }
+    // Adding the id var so that WP recognizes it
+    function my_insert_query_vars( $vars )
+    {
+        array_push($vars, 'id');
+        return $vars;
+    }
+
+
+##Late biding
+
+- late bind pw classes and libs
+- dinamic load method
+- probe caching
+
+##Refactoring
+
+- checar quais componentes sao necessarios ao plugin
+
+##Docs
+

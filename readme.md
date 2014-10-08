@@ -81,9 +81,6 @@ Every php file in `modules` folder gets included in your WP runtime automaticall
 
 The first magic methods you should be aware of are the Core Module methods:
 
-- **init**: to init your object soon as it gets included
-- **init_hooks**: to add actions and filters your class depends on
-
     class App_Pool extends PW_Module
     {
         static function init()
@@ -96,6 +93,10 @@ The first magic methods you should be aware of are the Core Module methods:
             add_action( 'admin_enqueue_scripts', array( 'App_Pool', 'register_scripts' ) );
         }
     }
+
+- **init**: to init your object soon as it gets included
+- **init_hooks**: to add actions and filters your class depends on
+
 
 ####Ajax
 

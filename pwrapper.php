@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Pods Wrapper
-Description:  Facilities to Pods class-based development
+Plugin Name: PWrapper
+Description:  Facilities to WP as Framework in class-based fashion
 Plugin URI:
-Version: v0.1
+Version: v0.3
 Author: Thiago Fernandes
 Plugin Type: Pods
 */

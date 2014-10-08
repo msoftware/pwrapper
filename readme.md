@@ -68,12 +68,12 @@ On your theme or plugin, the following folder structure should exist
 
     - theme-v2
         - pwrapper
-            - includes
+            - modules
                 - class.php
             - templates
                 - view.html
 
-Every php file in `includes` folder gets into your WP runtime automatically. When using templates, each module `template` folder gets into lookup hierarchy.
+Every php file in `modules` folder gets included in your WP runtime automatically. When using templates, each module `template` folder gets into lookup hierarchy.
 
 ##Modules
 

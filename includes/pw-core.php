@@ -1,6 +1,6 @@
 <?php
-include_once PW_PATH .'includes/pw-base.php';
-include_once PW_PATH .'includes/pw-helpers.php';
+include_once PW_PATH .'modules/pw-base.php';
+include_once PW_PATH .'modules/pw-helpers.php';
 
 class PWrapper
 {
@@ -231,8 +231,8 @@ class PWrapper
 			? [ $name => self::$components[$name]]
 			: self::$components;
 
-		// components files folder
-		$folder = 'includes';
+		// modules files folder
+		$folder = 'modules';
 
 		$found_classes = [];
 

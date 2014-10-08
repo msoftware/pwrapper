@@ -79,7 +79,26 @@ Every php file in `includes` folder gets into your WP runtime automatically. Whe
 
 ####Core
 
+The first magic methods you should be aware of are the Core Module methods:
+
+- **init**: to init your object soon as it gets included
+- **init_hooks**: to add actions and filters your class depends on
+
+    class App_Pool extends PW_Module
+    {
+        static function init()
+        {
+            // initialize the class dependencies
+        }
+        static function init_hooks()
+        {
+            // initialize the class hooks
+            add_action( 'admin_enqueue_scripts', array( 'App_Pool', 'register_scripts' ) );
+        }
+    }
+
 ####Ajax
+
 
 WP Ajax functionality is easily integrated within PW - JavaScript and your classes lives transparently. You can create public or private (admin only) ajax methods.
 

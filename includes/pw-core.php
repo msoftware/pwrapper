@@ -2,7 +2,7 @@
 include_once PW_PATH .'includes/pw-base.php';
 include_once PW_PATH .'includes/pw-helpers.php';
 
-class Pods_Wrapper
+class PWrapper
 {
 	public static $components = array(),
 				  $classes = array();
@@ -54,21 +54,21 @@ class Pods_Wrapper
 	 */
     public static function init_hooks()
     {
-		//add_action( 'admin_init', array( 'Pods_Wrapper', 'check_dependencies' ) );
+		//add_action( 'admin_init', array( 'PWrapper', 'check_dependencies' ) );
 
     	// init theme components
-	    add_action( 'setup_theme', array('Pods_Wrapper', 'init_themes'), 20 );
+	    add_action( 'setup_theme', array('PWrapper', 'init_themes'), 20 );
 
 	    // init components startup method
-        add_filter( 'init', ['Pods_Wrapper', 'init_components'], 22 );
+        add_filter( 'init', ['PWrapper', 'init_components'], 22 );
 
 		// Plugin activation
-		register_activation_hook( 'pods-wrapper/pods-wrapper.php', array( 'Pods_Wrapper', 'install' ) );
+		register_activation_hook( 'pods-wrapper/pods-wrapper.php', array( 'PWrapper', 'install' ) );
 
 		// Admin and Front scripts enqueue
-		add_action( 'admin_enqueue_scripts', array( 'Pods_Wrapper', 'register_scripts' ) );
-		add_action( 'login_enqueue_scripts', array( 'Pods_Wrapper', 'register_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( 'Pods_Wrapper', 'register_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( 'PWrapper', 'register_scripts' ) );
+		add_action( 'login_enqueue_scripts', array( 'PWrapper', 'register_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( 'PWrapper', 'register_scripts' ) );
     }
 
     /**

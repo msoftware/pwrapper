@@ -39,7 +39,7 @@ class PW_Data extends PW_Module
         if ( ! function_exists( 'get_plugins' ) )
             require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-        foreach (Pods_Wrapper::$components as $component => $options)
+        foreach (PWrapper::$components as $component => $options)
         {
             $directory = $options['pwrapper'];
 

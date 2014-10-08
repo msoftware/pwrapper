@@ -49,7 +49,7 @@ class PW_Admin_Menu extends PW_Module {
     public static function init_admin_menu()
     {
         // Call the admin menu of pw_type classes
-        $cls_menus = Pods_Wrapper::component_call( 'admin_menu', false );
+        $cls_menus = PWrapper::component_call( 'admin_menu', false );
 
         // loop returned classes menus and add them to wp
         foreach ($cls_menus as $class => $menus)

@@ -30,7 +30,7 @@ class PW_Template extends PW_Module
 
     static function init_theme()
     {
-        foreach (Pods_Wrapper::$components as $component => $options)
+        foreach (PWrapper::$components as $component => $options)
             self::$options_default['searchpath'][] = $options['pwrapper'] .'/templates/';
         // todo: check hierarchy...
     }

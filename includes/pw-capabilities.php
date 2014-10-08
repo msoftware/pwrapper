@@ -25,7 +25,7 @@ class PW_Capabilities extends PW_Module
         if (Cache_Helper::cache())
             return true;
 
-        foreach (Pods_Wrapper::classes_loaded('PW_Module') as $class)
+        foreach (PWrapper::classes_loaded('PW_Module') as $class)
         {
             // call class method to seek custom capabilities
             if (method_exists($class, 'capabilities'))

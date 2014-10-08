@@ -18,7 +18,7 @@ class PW_Ajax extends PW_Module {
 	// Adds callback to the ajax calls
 	public static function ajax_init()
 	{
-		$ajax_methods = Pods_Wrapper::classes_methods(['_ajax', '_ajax_public']);
+		$ajax_methods = PWrapper::classes_methods(['_ajax', '_ajax_public']);
 		foreach ($ajax_methods as $cls => $methods)
 		{
 			//$cls = strtolower($cls);

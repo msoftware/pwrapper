@@ -19,7 +19,7 @@ class PW_Admin_Post_Filter extends PW_Module
         if (!is_admin())
             return false;
         
-        $cls_filters = Pods_Wrapper::component_call( 'post_filter', false );
+        $cls_filters = PWrapper::component_call( 'post_filter', false );
         foreach ($cls_filters as $class => $filters)
         {
             foreach ($filters as $name => $options)

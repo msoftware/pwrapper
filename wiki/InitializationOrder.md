@@ -2,17 +2,17 @@
 
 ###Hook 1: plugins_loaded
 
-1. Pods_Wrapper::init
-2. Pods_Wrapper::init_hooks
+1. PWrapper::init
+2. PWrapper::init_hooks
 3. PW_Component::init
 4. PW_Component::init_hooks
-5. Pods_Wrapper::init_plugins
+5. PWrapper::init_plugins
     1. Plugin::init
     2. Plugin::init_hooks
 
 ###Hook 2: setup_theme
 
-1. Pods_Wrapper::init_theme
+1. PWrapper::init_theme
     1. Theme::init
     2. Theme::init_hooks
     3. Theme::init_theme
@@ -20,7 +20,7 @@
 
 ###Hook 3: init
 
-1. Pods_Wrapper::init_components
+1. PWrapper::init_components
     1. Plugin::*_init
     2. Theme::*_init
 

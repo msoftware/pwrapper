@@ -15,7 +15,7 @@ class PW_Widgets extends PW_Module {
 	 */
 	static function init_theme()
 	{
-        foreach (Pods_Wrapper::classes_methods('_widget') as $class => $methods)
+        foreach (PWrapper::classes_methods('_widget') as $class => $methods)
         {
             foreach ($methods as $method)
             {

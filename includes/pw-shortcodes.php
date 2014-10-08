@@ -17,7 +17,7 @@ class PW_Shortcodes extends PW_Module {
      */
     public static function shortcodes_init()
     {
-        foreach (Pods_Wrapper::classes_methods(['_shortcode', '_shortcode_post']) as $cls => $methods)
+        foreach (PWrapper::classes_methods(['_shortcode', '_shortcode_post']) as $cls => $methods)
         {
             foreach ($methods as $method)
             {

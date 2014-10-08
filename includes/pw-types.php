@@ -48,7 +48,7 @@ class PW_Types extends PW_Module {
     {
         // class methods managing actions in types
         $actions = array_keys(self::$hooks);
-        $action_methods = Pods_Wrapper::classes_methods($actions);
+        $action_methods = PWrapper::classes_methods($actions);
         $actions_regex = implode('|', $actions);
 
         foreach ($action_methods as $class => $methods)

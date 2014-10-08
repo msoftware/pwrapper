@@ -24,10 +24,10 @@ if ( !defined( 'ABSPATH' ) ) {
 define( 'PW_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'PW_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 
-if ( !class_exists( 'Pods_Wrapper' ) )
+if ( !class_exists( 'PWrapper' ) )
 {
 	include_once PW_PATH . 'includes/pw-core.php';
 
     //initialize plugin
-    add_action('plugins_loaded', array('Pods_Wrapper', 'init'));
+    add_action('plugins_loaded', array('PWrapper', 'init'));
 }

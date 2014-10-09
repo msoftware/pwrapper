@@ -91,7 +91,7 @@ class File_Helper {
             'post_mime_type' => ( !$wp_filetype[ 'type' ] ? 'text/' . $extension : $wp_filetype[ 'type' ] ),
             'guid' => $uploads[ 'url' ] . '/' . $filename,
             'post_parent' => null,
-            'post_title' => 'Pods Wrapper File (' . $name . ')',
+            'post_title' => 'PWrapper File (' . $name . ')',
             'post_content' => '',
             'post_status' => 'private'
         );

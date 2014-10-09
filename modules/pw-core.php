@@ -15,7 +15,7 @@ class PWrapper
 		self::init_hooks();
 
 		# Init/Register the plugin
-		self::component_setup('pods-wrapper', dirname( dirname( __FILE__ ) ));
+		self::component_setup('pwrapper', dirname( dirname( __FILE__ ) ));
 
 		self::init_plugins();
 	}
@@ -36,7 +36,7 @@ class PWrapper
 		 	{
 		 		// check if this is a pw plugin
 		 		$plugin = get_file_data( WP_PLUGIN_DIR . "/$file", ['Depends'=>'Depends'] );
-		 		if ( strpos($plugin['Depends'], 'pods-wrapper') === false )
+		 		if ( strpos($plugin['Depends'], 'pwrapper') === false )
 		 		 	continue;
 
 		 		$name = preg_split('/[\/\.]/', $file)[0];
@@ -63,7 +63,7 @@ class PWrapper
         add_filter( 'init', ['PWrapper', 'init_components'], 22 );
 
 		// Plugin activation
-		register_activation_hook( 'pods-wrapper/pods-wrapper.php', array( 'PWrapper', 'install' ) );
+		register_activation_hook( 'pwrapper/pwrapper.php', array( 'PWrapper', 'install' ) );
 
 		// Admin and Front scripts enqueue
 		add_action( 'admin_enqueue_scripts', array( 'PWrapper', 'register_scripts' ) );
@@ -225,7 +225,7 @@ class PWrapper
 	 * @param  string $class Class name to match
 	 * @return array         Found classes
 	 */
-	public static function component_load($name='pods-wrapper', $class='pw_module')
+	public static function component_load($name='pwrapper', $class='pw_module')
 	{
 		$units = $name
 			? [ $name => self::$components[$name]]
@@ -291,7 +291,7 @@ class PWrapper
 	/**
 	* Execute a static method on every file class of a component
 	*/
-	public static function component_call($method, $component='pods-wrapper', $class='pw_module')
+	public static function component_call($method, $component='pwrapper', $class='pw_module')
 	{
 		$classes = self::component_load($component, $class);
 		$result = [];

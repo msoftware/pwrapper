@@ -30,7 +30,7 @@ class PW_Shortcodes extends PW_Module {
                 $action = str_replace('_shortcode', '', $method);
 
                 if ( array_key_exists($action, self::$shortcodes) )
-                    pods_error("Shortcode action name already registred ($cls->$method).");
+                    PW_Error::die_error("Shortcode action name already registred ($cls->$method).");
 
                 add_shortcode( $action, array( 'PW_Shortcodes', 'callback' ) );
 

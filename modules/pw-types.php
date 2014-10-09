@@ -63,7 +63,7 @@ class PW_Types extends PW_Module {
                 elseif (isset($class::$type))
                     $type = $class::$type;
                 else
-                    pods_error("PW_Type: No type defined for method $class::$method");
+                    PW_Error::die_error("PW_Type: No type defined for method $class::$method");
 
                 // pods hook
                 $hook = self::$hooks[$action];

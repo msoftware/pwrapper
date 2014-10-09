@@ -323,7 +323,7 @@ class PW_Admin_Menu extends PW_Module {
             if (method_exists($menu['class'], "{$action}_form_post"))
             {
                 if( !wp_verify_nonce( $_POST['fieldmanager-' . $menu['form']['name'] . '-nonce'], 'fieldmanager-save-' . $menu['form']['name'] ) ) {
-                    pods_error( 'Nonce validation failed' );
+                    PW_Error::die_error( 'Nonce validation failed' );
                 }
 
                 // post data for this form

@@ -64,7 +64,7 @@ class File_Helper {
     static function upload($name, $data)
     {
         if ( !( ( $uploads = wp_upload_dir( current_time( 'mysql' ) ) ) && false === $uploads[ 'error' ] ) )
-            return pods_error( __( 'There was an issue saving the file in your uploads folder.', 'pwrapper' ), true );
+            return PW_Error::die_error( __( 'There was an issue saving the file in your uploads folder.', 'pwrapper' ), true );
 
         // Generate unique file name
         $filename = wp_unique_filename( $uploads[ 'path' ], $name );
@@ -101,7 +101,7 @@ class File_Helper {
 
         // error!
         if ( is_wp_error( $attachment_id ) )
-            return pods_error( __( 'There was an issue saving the file in your uploads folder.', 'pwrapper' ), true );
+            return PW_Error::die_error( __( 'There was an issue saving the file in your uploads folder.', 'pwrapper' ), true );
 
         return $attachment[ 'guid' ];
     }
@@ -706,6 +706,57 @@ class Cache_Helper
 
     }
 }
+
+
+class Error_Helper
+{
+    // default params for `print`, in order to receive unexpected messages (pods_bypass)
+    static $type = '';
+    static $action = '';
+
+    //todo: bind/hook into pods_error to make their messages beter
+    static function die_error($message, $type=null, $action=null)
+    {
+        if ($type === null)
+            $type = self::$type;
+        if ($action === null)
+            $action = self::$action;
+
+        $error = "<h1>Ops, ocorreu um erro</h1>
+                    <p>$message</p>";
+
+        switch ($type) {
+            case 'back':
+                if (!$action)
+                    $action = 'javascript:history.back();';
+                $error = $error ."<a href=\"$action\">Voltar</a>";
+                break;
+            default:
+                //$error = $error;
+                break;
+        }
+
+        if ( !defined( 'DOING_AJAX' ) )
+        {
+            $title = wp_title('', false);
+            $title .= ' | '. get_bloginfo('name');
+
+            wp_die( $error, $title, ['response'=>200] );
+        }
+        else
+            die( "<e>$message</e>" );
+    }
+
+    static function pods_bypass($null, $message)
+    {
+        if (!is_admin())
+        {
+            self::die_error($message);
+            return true;
+        }
+    }
+}
+
 
 
 trait PW_Singleton
